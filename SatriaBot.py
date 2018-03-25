@@ -2,18 +2,21 @@
 
 import SATRIA
 from SATRIA.lib.curve.ttypes import *
+from io import StringIO
 from datetime import datetime
-import time,random,sys,json,codecs,threading,glob,re,os,subprocess
+import time,random,sys,json,codecs,threading,glob,sys
+import re,string,os
+import os.path,sys,urllib,shutil,subprocess
 
 cl = SATRIA.LINE()
-cl.login(token="EqDwDPBRZITDe7TDdI61.xu+pRemObjXCqJHhZX8tqq.O0f7mBKR3LxRmcOfDOOr2BKs/n3a6DGx5/hLC8UfVe4=")
+cl.login(qr=True)
 cl.loginResult()
 
-print "=====[Login Success]======"
+print "🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨\nSELAMAT MENGGUNAKAN"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-helpmsg ="""╔════════════════════════════════
+helpmsg ="""╔════🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨═══════
 ╠➩  My SelfBot
 ╠ 
 ╠➩  Help1-5
@@ -23,7 +26,7 @@ helpmsg ="""╔═════════════════════�
 ╚════════════════════════════════
 """
 
-helppro ="""╔═════════════════
+helppro ="""╔═══🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨════════
 ╠   Protect Command
 ╠➩〘Protect on/off〙
 ���➩〘Qr on/off〙
@@ -32,7 +35,7 @@ helppro ="""╔═════════════════
 ╚═════════════════
 """
 
-helpself ="""╔═════════════════
+helpself ="""╔═══🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨════════
 ╠   Selft Command
 ╠➩〘Me〙
 ╠➩〘Myname: 〙
@@ -61,7 +64,7 @@ helpself ="""╔═════════════════
 ╚═════════════════
 """
 
-helpset ="""╔═════════════════
+helpset ="""╔════🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨═══════
 ╠   Setting Command
 ╠➩〘Contact on/off〙
 ╠➩〘Autojoin on/off〙
@@ -76,7 +79,7 @@ helpset ="""╔═════════════════
 ╚═════════════════
 """
 
-helpgrup ="""╔═════════════════
+helpgrup ="""╔════🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨════════
 ╠   Group Command
 ╠➩〘Link on/off〙
 ╠➩〘Url〙
@@ -101,7 +104,7 @@ helpgrup ="""╔═════════════════
 ╚═════════════════
 """
 
-helpmed ="""╔═════════════════
+helpmed ="""╔════🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨════════
 ╠   Social Media Command
 ╠➩〘kalender〙
 ╠➩〘tr-id 〙
@@ -139,6 +142,8 @@ wait = {
     'pap':{},
     'invite':{},
     "spam":{},
+    "Sider":{},
+    "Tag":True,
     'contact':False,
     'autoJoin':True,
     'autoCancel':{"on":False,"members":1},
@@ -181,6 +186,12 @@ mimic = {
 settings = {
     "simiSimi":{}
     }
+    
+cctv = {
+    "cyduk":{},
+    "point":{},
+    "sidermem":{}
+}    
 
 res = {
     'num':{},
@@ -556,6 +567,45 @@ def bot(op):
                                 break
                             except:
                                     pass    
+                                    
+#----------------------------------------------------------------------------
+
+
+            if wait["alwaysRead"] == True:
+                if msg.toType == 0:
+                    cl.sendChatChecked(msg.from_,msg.id)
+                else:
+                    cl.sendChatChecked(msg.to,msg.id)
+                    
+             
+        if op.type == 55:
+                try:
+                    if cctv['cyduk'][op.param1]==True:
+                        if op.param1 in cctv['point']:
+                            Name = cl.getContact(op.param2).displayName
+                            if Name in cctv['sidermem'][op.param1]:
+                                pass
+                            else:
+                                cctv['sidermem'][op.param1] += "\n• " + Name
+                                if " " in Name:
+                                    nick = Name.split(' ')
+                                    if len(nick) == 2:
+                                        cl.sendText(op.param1, "🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨\n\n""Haii " + "👉"+"@ " + nick[0] + " 👈" + "\nNgintip Aja Niih. . .\nChat Kek Idiih (-__-)   ")
+                                    else:
+                                        cl.sendText(op.param1,"🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨\n\n""Haii " + "👉 "+"@ " + nick[1] + " 👈" + "\nBetah Banget Jadi Penonton. . .\nChat Napa (-__-)   ")
+                                else:
+                                    cl.sendText(op.param1,"🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨\n\n""Haii " + "👉 "+"@ " + Name + " 👈" + "\nNgapain Kak Ngintip Aja???\nSini Gabung Chat...   ")
+                        else:
+                            pass
+                    else:
+                        pass
+                except:
+                    pass
+
+        else:
+            pass    
+            
+#--------------------------------
                                 
             if wait["alwayRead"] == True:
                 if msg.toType == 0:
@@ -1339,7 +1389,8 @@ def bot(op):
                         except:
                             creator = "Error"
                 
-            elif msg.text in ["Friendlist"]:    
+            elif msg.text in ["Friendlist"]: 
+               if msg.toType == 2:
                 contactlist = cl.getAllContactIds()
                 kontak = cl.getContacts(contactlist)
                 num=1
@@ -1351,6 +1402,7 @@ def bot(op):
                 cl.sendText(msg.to, msgs)
                 
             elif msg.text in ["Memlist"]:   
+               if msg.toType == 2:
                 kontak = cl.getGroup(msg.to)
                 group = kontak.members
                 num=1
@@ -1510,6 +1562,7 @@ def bot(op):
                 cl.sendText(msg.to,"Success Add all")
 #==============================================================================#
             elif "tagall" == msg.text.lower():
+            	if msg.toType == 2:
                  group = cl.getGroup(msg.to)
                  nama = [contact.mid for contact in group.members]
                  nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
@@ -1544,53 +1597,37 @@ def bot(op):
                  cnt.text = "Jumlah:\n" + str(jml) +  " Members"
                  cnt.to = msg.to
                  cl.sendMessage(cnt)
+#----------------------------------
+            elif "Waktu" in msg.text:
+                if msg.toType == 2:
+	    	       wait2['setTime'][msg.to] = datetime.today().strftime('TANGGAL : %Y-%m-%d \nHARI : %A \nJAM : %H:%M:%S')
+	               cl.sendText(msg.to, "         Waktu/Tanggal\n\n" + (wait2['setTime'][msg.to]))
+	               cl.sendText(msg.to, "Maafin Satria Jika salah Ya kak\n(｀・ω・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))
+#-------------------------------------------------
 
-            elif "sider on" == msg.text.lower():
-                if msg.to in wait2['readPoint']:
-                        try:
-                            del wait2['readPoint'][msg.to]
-                            del wait2['readMember'][msg.to]
-                            del wait2['setTime'][msg.to]
-                        except:
-                            pass
-                        wait2['readPoint'][msg.to] = msg.id
-                        wait2['readMember'][msg.to] = ""
-                        wait2['setTime'][msg.to] = datetime.now().strftime('%H:%M:%S')
-                        wait2['ROM'][msg.to] = {}
-                        with open('sider.json', 'w') as fp:
-                         json.dump(wait2, fp, sort_keys=True, indent=4)
-                         cl.sendText(msg.to,"Cek Sider already on")
+            elif "Sider on" in msg.text:
+	      if msg.toType == 2:
+                try:
+                    del cctv['point'][msg.to]
+                    del cctv['sidermem'][msg.to]
+                    del cctv['cyduk'][msg.to]
+                except:
+                    pass
+                cctv['point'][msg.to] = msg.id
+                cctv['sidermem'][msg.to] = ""
+                cctv['cyduk'][msg.to]=True
+                wait["Sider"] = True
+                cl.sendText(msg.to,"🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨\nSet reading point:\n" + datetime.now().strftime('%H:%M:%S'))
+                
+            elif "Sider off" in msg.text:
+	      if msg.toType == 2:
+                if msg.to in cctv['point']:
+                    cctv['cyduk'][msg.to]=False
+                    wait["Sider"] = False
+                    cl.sendText(msg.to, "🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨\nDelete reading point:\n" + datetime.now().strftime('%H:%M:%S'))
                 else:
-                    try:
-                            del wait2['readPoint'][msg.to]
-                            del wait2['readMember'][msg.to]
-                            del wait2['setTime'][msg.to]
-                    except:
-                          pass
-                    wait2['readPoint'][msg.to] = msg.id
-                    wait2['readMember'][msg.to] = ""
-                    wait2['setTime'][msg.to] = datetime.now().strftime('%H:%M:%S')
-                    wait2['ROM'][msg.to] = {}
-                    with open('sider.json', 'w') as fp:
-                     json.dump(wait2, fp, sort_keys=True, indent=4)
-                     cl.sendText(msg.to, "Set reading point:\n" + datetime.now().strftime('%H:%M:%S'))
-                     print wait2
-
-                    
-            elif "sider off" == msg.text.lower():
-                if msg.to not in wait2['readPoint']:
-                    cl.sendText(msg.to,"Cek Sider already off")
-                else:
-                    try:
-                            del wait2['readPoint'][msg.to]
-                            del wait2['readMember'][msg.to]
-                            del wait2['setTime'][msg.to]
-                    except:
-                          pass
-                    cl.sendText(msg.to, "Delete reading point:\n" + datetime.now().strftime('%H:%M:%S'))
-
-
-                    
+                    cl.sendText(msg.to, "🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨\nDelete reading point:\n" + datetime.now().strftime('%H:%M:%S'))
+                
             elif "sider" == msg.text.lower():
                     if msg.to in wait2['readPoint']:
                         if wait2["ROM"][msg.to].items() == []:
@@ -1630,6 +1667,7 @@ def bot(op):
            
                     else:
                         cl.sendText(msg.to, "Lurking has not been set.")
+
             elif "sendgroup:" in msg.text.lower():
                     sep = msg.text.split(" ")
                     txt = msg.text.replace(sep[0] + " ","")
