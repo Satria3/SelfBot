@@ -145,11 +145,11 @@ wait = {
     "Sider":{},
     "Tag":True,
     'contact':False,
-    'autoJoin':True,
+    'autoJoin':False,
     'autoCancel':{"on":False,"members":1},
     'leaveRoom':False,
     'timeline':True,
-    'autoAdd':True,
+    'autoAdd':False,
     'message':"Thanks for add me ^_^",
     "lang":"JP",
     "comment":"Haii Kaka",
@@ -674,7 +674,7 @@ def bot(op):
                     cl.sendText(msg.to,msg.text)
             elif msg.text is None:
                 return
-            elif msg.text.lower() == 'selfhelp':
+            elif msg.text.lower() == 'help':
                 if wait["lang"] == "JP":
                     cl.sendText(msg.to,helpmsg)
                 else:
