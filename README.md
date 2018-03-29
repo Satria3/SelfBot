@@ -1,4 +1,5 @@
 🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨
+
 BOTTROX 1 AKUN
 ------
 GET TOKEN :
@@ -6,8 +7,10 @@ GET TOKEN :
 - `git clone https://github.com/alfathdirk/LineAlphatJS.git
 cd LineAlphatJS && npm install
 npm start`
+
 Cara Install : 🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨
 ------
+
 Di C9 :
 - Ketik -> `sudo apt-get update`
 - Ketik -> `sudo apt-get install git`
@@ -20,10 +23,11 @@ Di C9 :
 - Ketik -> `sudo pip install gtts`
 - Ketik -> `sudo pip install googletrans`
 - Ketik -> `git clone https://github.com/Satria3/SelfBot`
-- Ketik -> `cd BotTrox2`
-- Ketik -> `python BotTrox2.py`
+- Ketik -> `cd Selfbot`
+- Ketik -> `python SatriaBot.py`
 
 Di Termux :
+
 - Ketik -> `pkg update`
 - Ketik -> `pkg install git`
 - Ketik -> `pkg install python2`
@@ -56,5 +60,5 @@ Credit By @Satria.
 Thx To :
 ------
 - `LINE-TCR TEAM`
-
-
+- `ONE PIECE TEAM`
+- `DAN KAWAN-KAWAN`
